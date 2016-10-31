@@ -9,6 +9,7 @@ Flight5001::Flight5001(string o,string des,string dep,string n,float dur,float d
     duration = dur;
     distance = dis;
     num_of_seats = nos;
+    a = ar;
 }
 string Flight5001::getName()
 {
@@ -42,7 +43,7 @@ void Flight5001::redAvailableSeats()
 {
     num_of_seats--;
 }
-Airline& Flight5001::getAirline()
+Airline & Flight5001::getAirline()
 {
-    return *a;
+    return * a;
 }
