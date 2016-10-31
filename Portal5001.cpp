@@ -14,6 +14,8 @@ bool Portal5001::myfunctor::operator()(Flight * f1,Flight * f2)
         bool answer;
         if(sortField==Airlines)
         {
+            cout<<"1\n";
+            cout<<(f1->getAirline()).getName()<<endl;
             answer = ((f1->getAirline()).getName().compare((f2->getAirline()).getName())<0);
         }
         else if(sortField==Price)
@@ -34,7 +36,6 @@ bool Portal5001::myfunctor::operator()(Flight * f1,Flight * f2)
     }
 Flight * Portal5001::retTopFlight(SortField sortField,SortOrder sortOrder,string air)
 {
-
     vector<Flight *> f;
     f.clear();
     if(air!="")
@@ -132,6 +133,7 @@ void Portal5001::showFlights(string origin, string destination, SortField sortFi
 }
 bool Portal5001::buyTicket(BuyOption criteria, string airline)
 {
+    cout<<"1\n";
     Flight *f;
     if(criteria==Earliest)
     {
@@ -178,6 +180,7 @@ void Portal5001::processUserInput(string inputFileName)
     mb["fastest"] = Fastest;
     while(myfile>>comm)
     {
+
         if(comm=="sort")
         {
             myfile>>icrit>>iord;
