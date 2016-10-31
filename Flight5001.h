@@ -13,7 +13,7 @@ class Flight5001 : public Flight
     int num_of_seats;
     Airline * a;
 public:
-    Flight5001(string o,string des,string dep,string n,float dur,float dis,int nos,Airline5001* ar);
+    Flight5001(string o,string des,string dep,string n,float dur,float dis,int nos,Airline* ar);
     string getName();
     string getOrigin();
     string getDestination();

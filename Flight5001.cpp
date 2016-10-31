@@ -1,6 +1,6 @@
 #include "Flight5001.h"
 using namespace std;
-Flight5001::Flight5001(string o,string des,string dep,string n,float dur,float dis,int nos,Airline5001* ar)
+Flight5001::Flight5001(string o,string des,string dep,string n,float dur,float dis,int nos,Airline* ar)
 {
     origin = o;
     destination = des;

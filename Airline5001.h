@@ -21,7 +21,7 @@ public:
     Airline5001(Portal *p1);
     string getName();
     void init(string ifile);
-    void findFlights(string origin, string destination,vector<Flight5001 *> & flights);
+    void findFlights(string origin, string destination,vector<Flight *> & flights);
     float getPrice(Flight *flight);
     bool issueTicket(Flight *flight);
     int getNumSold();

@@ -8,6 +8,7 @@ Airline5001::Airline5001(Portal* p1): Airline(p1)
     ts = 0;
     Airline * ta = static_cast<Airline *>(this);
     p1->addAirline(ta);
+    name = "A0071";
 }
 
 string Airline5001::getName()
@@ -20,12 +21,11 @@ void Airline5001::init(string ifile)
     ifstream myfile;
     myfile.open(temp);
     myfile >> ts;
-    while(!myfile.eof())
+    string o,des;
+    int nof;
+    float dur,dis,minp,maxp,dev;
+    while(myfile>>o>>des>>nof)
     {
-        string o,des;
-        int nof;
-        float dur,dis,minp,maxp,dev;
-        myfile>>o>>des>>nof;
         getPortal()->routeInfo(o,des,dis,dur,minp,maxp,dev);
         for(int i=0;i<nof;i++)
         {
@@ -33,19 +33,23 @@ void Airline5001::init(string ifile)
             f.push_back(tf);
         }
     }
+    myfile.close();
 }
 float Airline5001::getPrice(Flight * fl)
 {
     return fl->getDistance();
 }
-void Airline5001::findFlights(string origin, string destination,vector<Flight5001 *>& flights)
+void Airline5001::findFlights(string origin, string destination,vector<Flight *>& flights)
 {
+    cout<<origin<<destination<<endl;
     vector<Flight5001 *>::iterator cit;
     for(cit = f.begin();cit<f.end();cit++)
     {
-        Flight5001 * tcit = *cit;
+        Flight * tcit = *cit;
+        cout<<tcit->getOrigin()<<origin<<endl;
         if(tcit->getOrigin()==origin && tcit->getDestination()==destination && tcit->numAvailableSeats()>0)
             flights.push_back(tcit);
+        cout<<flights.size()<<endl;
     }
 }
 int Airline5001::getNumSold()

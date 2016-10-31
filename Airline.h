@@ -21,7 +21,7 @@ public:
 	// The list of flights is appended to the vector flights that is passed in.
 	// Input vector flights will not be a null reference
 	virtual void findFlights(string origin, string destination,
-				             vector<Flight *>& flights) {}
+				             vector<Flight *>& flights) = 0;
 
 	// get the current price for a specified flight of this airline
 	virtual float getPrice(Flight *flight) = 0;

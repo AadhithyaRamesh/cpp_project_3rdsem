@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <algorithm>
+#include <iostream>
 #ifndef PORTAL_H_INCLUDED
 #define PORTAL_H_INCLUDED
 #include "Portal.h"
@@ -28,7 +29,7 @@ class Portal5001 : public Portal
     vector<Airline *> a;
     string lo,ld;
     vector<Flight *> sortFlights(string origin, string destination, SortField sortField = Airlines,SortOrder sortOrder = Descending);
-    Flight * retTopFlight(SortField sortField,SortOrder SortOrder,string air);
+    Flight * retTopFlight(SortField sortField,SortOrder SortOrder,string air="");
     class myfunctor
     {
         SortField sortField;

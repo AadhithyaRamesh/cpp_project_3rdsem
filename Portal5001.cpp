@@ -44,11 +44,14 @@ Flight * Portal5001::retTopFlight(SortField sortField,SortOrder sortOrder,string
         {
             if((*cit)->getName()==air)
             {
+                cout<<(*cit)->getName()<<endl;
                 (*cit)->findFlights(lo,ld,f);
+                cout<<f.size()<<endl;
             }
         }
         if(f.empty())
         {
+            cout<<"22"<<endl;
             vector<Airline *>::iterator cit;
             for(cit=a.begin();cit<a.end();cit++)
             {
@@ -66,6 +69,8 @@ Flight * Portal5001::retTopFlight(SortField sortField,SortOrder sortOrder,string
     }
     myfunctor retgreater(sortField,sortOrder);
     sort(f.begin(),f.end(),retgreater);
+    if(f.empty())
+        cout<<"empty";
     return f[0];
 }
 vector<Flight *> Portal5001::sortFlights(string origin, string destination, SortField sortField,SortOrder sortOrder)
@@ -78,36 +83,6 @@ vector<Flight *> Portal5001::sortFlights(string origin, string destination, Sort
     {
         (*cit)->findFlights(origin,destination,f);
     }
-    /*class myfunctor
-    {
-        SortField sortfield;
-        SortOrder sortOrder;
-        public:
-        myfunctor(SortField s,SortOrder so):sortfield(s),sortOrder(so){}
-        bool operator()(Flight * f1,Flight * f2)
-        {
-            bool answer;
-            if(sortField==Airline)
-            {
-                answer = (f1->getAirline().getName().compare(f2->getAirline.getName())<0);
-            }
-            else if(sortField==Price)
-            {
-                answer = f1->getAirline().getPrice(f1)<f2->getAirline.getPrice(f2);
-            }
-            else if(sortField==Duration)
-            {
-                answer = f1->getDuration()<f2->getDuration();
-            }
-            else
-            {
-                answer = f1->getDeparture()<f2->getDeparture();
-            }
-            if(sortOrder==Descending)
-                answer = !(answer);
-            return answer;
-        }
-    };*/
     myfunctor retgreater(sortField,sortOrder);
     sort(f.begin(),f.end(),retgreater);
     return f;
@@ -117,15 +92,14 @@ void Portal5001::initRoutes(string routeInfo)
     const char * temp = routeInfo.c_str();
     ifstream myfile;
     myfile.open(temp);
-    while(!myfile.eof())
+    string o,des;
+    float dis,dur,minp,maxp,dev;
+    while(myfile>>o>>des>>dis>>dur>>minp>>maxp>>dev)
     {
-        string o,des;
-        float dis,dur,minp,maxp,dev;
-        myfile>>o>>des>>dis>>dur>>minp>>maxp>>dev;
         Route5001 * tr =  new Route5001(o,des,dis,dur,minp,maxp,dev);
         r.push_back(tr);
     }
-    void close();
+    myfile.close();
 }
 void Portal5001::addAirline(Airline * airline)
 {
@@ -181,7 +155,6 @@ bool Portal5001::buyTicket(BuyOption criteria, string airline)
 
 void Portal5001::processUserInput(string inputFileName)
 {
-
     string o,des,icrit,comm,iord,ibuy,preferred_airline;
     SortField crit;
     SortOrder ord;
@@ -203,9 +176,8 @@ void Portal5001::processUserInput(string inputFileName)
     mb["earliest"] = Earliest;
     mb["latest"] = Latest;
     mb["fastest"] = Fastest;
-    while(!myfile.eof())
+    while(myfile>>comm)
     {
-        myfile>>comm;
         if(comm=="sort")
         {
             myfile>>icrit>>iord;
@@ -220,4 +192,5 @@ void Portal5001::processUserInput(string inputFileName)
             buyTicket(buy,preferred_airline);
         }
     }
+    myfile.close();
 }
