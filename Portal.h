@@ -22,7 +22,7 @@ public:
 	// add an airline to the list of airlines that are part of this portal
 	// This is to be called by the constructor of the relevant Airline class,
 	// and the derived class of Portal should decide how to use this
-//	virtual void addAirline(Airline *airline) {}
+	virtual void addAirline(Airline *airline) {}
 
 	// return constraints/guidelines for a given origin+destination combination
 	// Please note: the first two arguments are input to the function, which then returns the

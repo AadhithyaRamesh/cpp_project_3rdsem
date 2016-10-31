@@ -6,6 +6,8 @@ using namespace std;
 Airline5001::Airline5001(Portal* p1): Airline(p1)
 {
     ts = 0;
+    Airline * ta = static_cast<Airline *>(this);
+    p1->addAirline(ta);
 }
 
 string Airline5001::getName()

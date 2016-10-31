@@ -1,6 +1,9 @@
 #ifndef FLIGHT5001_H_INCLUDED
 #define FLIGHT5001_H_INCLUDED
+#ifndef FLIGHT_H_INCLUDED
+#define FLIGHT_H_INCLUDED
 #include "Flight.h"
+#endif // FLIGHT_H_INCLUDED
 
 class Airline5001;
 class Flight5001 : public Flight

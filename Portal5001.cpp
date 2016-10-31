@@ -4,6 +4,9 @@
 Portal5001::Portal5001()
 {
     lo = "";
+    ld = "";
+    r.clear();
+    a.clear();
 }
 Portal5001::myfunctor::myfunctor(SortField s,SortOrder so):sortField(s),sortOrder(so){}
 bool Portal5001::myfunctor::operator()(Flight * f1,Flight * f2)
@@ -124,7 +127,7 @@ void Portal5001::initRoutes(string routeInfo)
     }
     void close();
 }
-void Portal5001::addAirline(Airline* airline)
+void Portal5001::addAirline(Airline * airline)
 {
     a.push_back(airline);
 }

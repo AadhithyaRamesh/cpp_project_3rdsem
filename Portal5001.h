@@ -5,9 +5,18 @@
 #include <iostream>
 #include <fstream>
 #include <algorithm>
+#ifndef PORTAL_H_INCLUDED
+#define PORTAL_H_INCLUDED
 #include "Portal.h"
+#endif // PORTAL_H_INCLUDED
+#ifndef AIRLINE_H_INCLUDED
+#define AIRLINE_H_INCLUDED
 #include "Airline.h"
+#endif // AIRLINE_H_INCLUDED
+#ifndef FLIGHT_H_INCLUDED
+#define FLIGHT_H_INCLUDED
 #include "Flight.h"
+#endif // FLIGHT_H_INCLUDED
 #include "Route5001.h"
 
 class Airline;
