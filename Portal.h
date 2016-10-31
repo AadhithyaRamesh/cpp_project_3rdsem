@@ -4,7 +4,7 @@
 
 using namespace std;
 
-
+class Route5001;
 class Airline;
 
 class Portal {
