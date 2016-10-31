@@ -12,7 +12,7 @@ public:
 	Portal() {}
 	virtual ~Portal() {}
 
-	enum SortField {Airline, Time, Duration, Price};
+	enum SortField {Airlines, Time, Duration, Price};
 	enum SortOrder {Ascending, Descending};
 	enum BuyOption {Cheapest, Fastest, Earliest, Latest};
 
@@ -43,7 +43,7 @@ protected:
 	// List is to be shown in sorted order, based on sortField and sortOrder
 	// sortField is one of the values of enum SortField
 	// sortOrder is one of values of enum SortOrder
-	virtual void showFlights(string origin, string destination, SortField sortField = Airline,
+	virtual void showFlights(string origin, string destination, SortField sortField = Airlines,
 					 SortOrder sortOrder = Descending) {}
 
 	// purchase a ticket based on BuyOption criteria, optionally specifying a preferred airline

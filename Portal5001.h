@@ -4,25 +4,38 @@
 #include <map>
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 #include "Portal.h"
-#include "Airline5001.h"
+#include "Airline.h"
+#include "Flight.h"
 #include "Route5001.h"
+
+class Airline;
+class Flight;
 
 class Portal5001 : public Portal
 {
     vector<Route5001 *> r;
-    vector<Airline5001 *> a;
+    vector<Airline *> a;
     string lo,ld;
-    vector<Flight *> sortFlights(string origin, string destination, SortField sortField = Airline,SortOrder sortOrder = Descending);
+    vector<Flight *> sortFlights(string origin, string destination, SortField sortField = Airlines,SortOrder sortOrder = Descending);
     Flight * retTopFlight(SortField sortField,SortOrder SortOrder,string air);
+    class myfunctor
+    {
+        SortField sortField;
+        SortOrder sortOrder;
+    public:
+        myfunctor(SortField s,SortOrder so);
+        bool operator()(Flight * f1,Flight * f2);
+    };
 public:
     Portal5001();
     void initRoutes(string routeInfo);
-    //void addAirline(Airline* airline);
+    void addAirline(Airline* airline);
     void routeInfo(string origin, string destination, float& dist, float& duration,float& minPrice, float& maxPrice, float& timeVariation);
-    void showFlights(string origin, string destination, SortField sortField = Airline,SortOrder sortOrder = Descending);
+    void showFlights(string origin, string destination, SortField sortField = Airlines,SortOrder sortOrder = Descending);
     void processUserInput(string inputFileName);
-    bool buyTicket(BuyOption cirteria, string airline = NULL);
+    bool buyTicket(BuyOption cirteria, string airline = "");
 };
 
 

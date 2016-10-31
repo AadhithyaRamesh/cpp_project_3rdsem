@@ -5,6 +5,7 @@
 
 int main()
 {
+    Portal5001 p1;
     Airline5001 a1(& p1);
     Flight5001 f("a","b","c","d",1.0,1.0,2,&a1);
     cout<<"a";
