@@ -1,5 +1,6 @@
 #include "Route5001.h"
 
+
 Route5001::Route5001(string o,string des,float dis,float dur,float minp,float maxp,float dev)
 {
     origin = o;
@@ -10,31 +11,31 @@ Route5001::Route5001(string o,string des,float dis,float dur,float minp,float ma
     max_price = maxp;
     deviation = dev;
 }
-string Route5001::string retOrigin()
+string Route5001::retOrigin()
 {
     return origin;
 }
-string Route5001::string retDestination()
+string Route5001::retDestination()
 {
     return destination;
 }
-float Route5001::string retminp()
+float Route5001::retminp()
 {
     return min_price;
 }
-float Route5001::string retmaxp()
+float Route5001::retmaxp()
 {
     return max_price;
 }
-float Route5001::string retdev()
+float Route5001::retdev()
 {
     return deviation;
 }
-float Route5001::string retdis()
+float Route5001::retdis()
 {
     return distance;
 }
-float Route5001::string retdur()
+float Route5001::retdur()
 {
     return duration;
 }
