@@ -192,6 +192,10 @@ void Portal5001::processUserInput(string inputFileName)
             myfile>>ibuy>>preferred_airline;
             buy = mb[ibuy];
             bool r = buyTicket(buy,preferred_airline);
+            if(r==false)
+            {
+                cout<<"No tickets available\n";
+            }
         }
     }
     myfile.close();

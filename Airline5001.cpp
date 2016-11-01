@@ -91,10 +91,12 @@ bool Airline5001::issueTicket(Flight* flight)
     if(flight->numAvailableSeats()>0)
     {
         ts--;
-        reven+=getPrice(flight);
+        float price = getPrice(flight);
+        reven+=price;
         pk+=flight->getDistance();
         Flight5001 * tflight = static_cast<Flight5001 *>(flight);
         tflight->redAvailableSeats();
+        cout<<"Ticket issued on flight "<<tflight->getName()<<" of Airline "<<tflight->getAirline().getName()<<" for the price of "<<price<<" Rs"<<endl;
         return true;
     }
     else
