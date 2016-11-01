@@ -28,7 +28,7 @@ void Airline5001::init(string ifile)
     ifstream myfile;
     myfile.open(temp);
     myfile >> ts;
-    string o,des;
+    string o,des,dep;
     int nof;
     float dur,dis,minp,maxp,dev;
     while(myfile>>o>>des>>nof)
@@ -40,10 +40,22 @@ void Airline5001::init(string ifile)
             stringstream out;
             out<<i;
             s = out.str();
-            Flight5001 * tf = new Flight5001(o,des,"0000",s,dur,dis,5,this);
+            string s1 = getName() + "-" + s;
+            if(i<nof/2)
+            {
+                dep = "0000";
+            }
+            else
+            {
+                dep = "2359";
+            }
+            Flight5001 * tf = new Flight5001(o,des,dep,s1,dur,dis,1,this);
             f.push_back(tf);
         }
+
     }
+    int sof = ts/f.size();
+    cout<<ts<<f.size()<<sof<<endl;
     myfile.close();
 }
 float Airline5001::getPrice(Flight * fl)

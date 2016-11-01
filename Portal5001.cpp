@@ -26,7 +26,9 @@ bool Portal5001::myfunctor::operator()(Flight * f1,Flight * f2)
         }
         else
         {
-            answer = f1->getDeparture()<f2->getDeparture();
+            int a = atoi((f1->getDeparture()).c_str());
+            int b = atoi((f2->getDeparture()).c_str());
+            answer = a<b;
         }
         if(sortOrder==Descending)
             answer = !(answer);
@@ -126,12 +128,11 @@ void Portal5001::showFlights(string origin, string destination, SortField sortFi
     for(it=f.begin();it<f.end();it++)
     {
         cout<<(*it)->getOrigin()<<" "<<(*it)->getDestination()<<" "<<(*it)->getDeparture()<<" "<<(*it)->getDuration()<<" "<<(*it)->getAirline().getPrice(*it)<<endl;
+        cout<<(*it)->getName()<<endl;
     }
-    cout<<"1\n";
 }
 bool Portal5001::buyTicket(BuyOption criteria, string airline)
 {
-    cout<<"1\n";
     Flight *f;
     if(criteria==Earliest)
     {

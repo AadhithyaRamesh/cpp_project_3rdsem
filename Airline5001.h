@@ -4,13 +4,12 @@
 #include <fstream>
 #include <string>
 #include "Portal5001.h"
+#include <sstream>
 #ifndef AIRLINE_H_INCLUDED
 #define AIRLINE_H_INCLUDED
-#include <sstream>
 #include "Airline.h"
 #endif // AIRLINE_H_INCLUDED
 #include "Flight5001.h"
-using namespace std;
 
 class Airline5001 : public Airline
 {
