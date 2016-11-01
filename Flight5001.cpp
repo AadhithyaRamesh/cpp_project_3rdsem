@@ -43,6 +43,10 @@ void Flight5001::redAvailableSeats()
 {
     num_of_seats--;
 }
+void Flight5001::setAvailableSeats(int s)
+{
+    num_of_seats = s;
+}
 Airline & Flight5001::getAirline()
 {
     return * a;

@@ -22,6 +22,7 @@ public:
     float getDistance();
     int numAvailableSeats();
     void redAvailableSeats();
+    void setAvailableSeats(int s);
     Airline& getAirline();
 };
 
