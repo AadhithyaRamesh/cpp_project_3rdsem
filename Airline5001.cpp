@@ -54,13 +54,13 @@ void Airline5001::init(string ifile)
         }
 
     }
-    /*int sof = ts/f.size();
+    int sof = ts/f.size();
     cout<<ts<<f.size()<<sof<<endl;
     for(unsigned int i = 0;i<f.size()-1;i++)
     {
         f[i]->setAvailableSeats(sof);
     }
-    f.back()->setAvailableSeats(ts-(sof*(f.size()-1)));*/
+    f.back()->setAvailableSeats(ts-(sof*(f.size()-1)));
     myfile.close();
 }
 float Airline5001::getPrice(Flight * fl)

@@ -8,6 +8,13 @@ Portal5001::Portal5001()
     r.clear();
     a.clear();
 }
+Portal5001::~Portal5001()
+{
+    for(unsigned int i = 0;i<r.size();i++)
+    {
+        delete r[i];
+    }
+}
 Portal5001::myfunctor::myfunctor(SortField s,SortOrder so):sortField(s),sortOrder(so){}
 bool Portal5001::myfunctor::operator()(Flight * f1,Flight * f2)
     {
@@ -34,7 +41,7 @@ bool Portal5001::myfunctor::operator()(Flight * f1,Flight * f2)
             answer = !(answer);
         return answer;
     }
-Flight * Portal5001::retTopFlight(SortField sortField,SortOrder sortOrder,string air)
+vector<Flight *> Portal5001::retTopFlight(SortField sortField,SortOrder sortOrder,string air)
 {
     vector<Flight *> f;
     f.clear();
@@ -51,7 +58,6 @@ Flight * Portal5001::retTopFlight(SortField sortField,SortOrder sortOrder,string
         }
         if(f.empty())
         {
-            cout<<"22"<<endl;
             vector<Airline *>::iterator cit;
             for(cit=a.begin();cit<a.end();cit++)
             {
@@ -69,9 +75,7 @@ Flight * Portal5001::retTopFlight(SortField sortField,SortOrder sortOrder,string
     }
     myfunctor retgreater(sortField,sortOrder);
     sort(f.begin(),f.end(),retgreater);
-    if(f.empty())
-        cout<<"empty";
-    return f[0];
+    return f;
 }
 vector<Flight *> Portal5001::sortFlights(string origin, string destination, SortField sortField,SortOrder sortOrder)
 {
@@ -127,13 +131,12 @@ void Portal5001::showFlights(string origin, string destination, SortField sortFi
     vector<Flight *>::iterator it;
     for(it=f.begin();it<f.end();it++)
     {
-        cout<<(*it)->getOrigin()<<" "<<(*it)->getDestination()<<" "<<(*it)->getDeparture()<<" "<<(*it)->getDuration()<<" "<<(*it)->getAirline().getPrice(*it)<<endl;
-        cout<<(*it)->getName()<<endl;
+        cout<<(*it)->getOrigin()<<" "<<(*it)->getDestination()<<" "<<(*it)->getDeparture()<<" "<<(*it)->getDuration()<<" "<<(*it)->numAvailableSeats()<<" "<<(*it)->getAirline().getPrice(*it)<<endl;
     }
 }
 bool Portal5001::buyTicket(BuyOption criteria, string airline)
 {
-    Flight *f;
+    vector<Flight *> f;
     if(criteria==Earliest)
     {
         f = retTopFlight(Time,Ascending,airline);
@@ -150,7 +153,11 @@ bool Portal5001::buyTicket(BuyOption criteria, string airline)
     {
         f = retTopFlight(Duration,Ascending,airline);
     }
-    bool r = (f->getAirline()).issueTicket(f);
+    if(f.empty())
+    {
+        return false;
+    }
+    bool r = (f[0]->getAirline()).issueTicket(f[0]);
     return r;
 }
 

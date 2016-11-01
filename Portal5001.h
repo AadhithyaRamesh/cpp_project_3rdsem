@@ -29,7 +29,7 @@ class Portal5001 : public Portal
     vector<Airline *> a;
     string lo,ld;
     vector<Flight *> sortFlights(string origin, string destination, SortField sortField = Airlines,SortOrder sortOrder = Descending);
-    Flight * retTopFlight(SortField sortField,SortOrder SortOrder,string air="");
+    vector<Flight *> retTopFlight(SortField sortField,SortOrder SortOrder,string air="");
     class myfunctor
     {
         SortField sortField;
@@ -40,6 +40,7 @@ class Portal5001 : public Portal
     };
 public:
     Portal5001();
+    ~Portal5001();
     void initRoutes(string routeInfo);
     void addAirline(Airline* airline);
     void routeInfo(string origin, string destination, float& dist, float& duration,float& minPrice, float& maxPrice, float& timeVariation);
