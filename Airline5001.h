@@ -6,10 +6,11 @@
 #include "Portal5001.h"
 #ifndef AIRLINE_H_INCLUDED
 #define AIRLINE_H_INCLUDED
+#include <sstream>
 #include "Airline.h"
 #endif // AIRLINE_H_INCLUDED
 #include "Flight5001.h"
-
+using namespace std;
 
 class Airline5001 : public Airline
 {
@@ -19,6 +20,7 @@ class Airline5001 : public Airline
     vector<Flight5001 *> f;
 public:
     Airline5001(Portal *p1);
+    ~Airline5001();
     string getName();
     void init(string ifile);
     void findFlights(string origin, string destination,vector<Flight *> & flights);

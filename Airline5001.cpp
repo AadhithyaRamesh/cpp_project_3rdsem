@@ -10,7 +10,14 @@ Airline5001::Airline5001(Portal* p1): Airline(p1)
     p1->addAirline(ta);
     name = "A0071";
 }
-
+Airline5001::~Airline5001()
+{
+    int s = f.size();
+    for(int i=0;i<s;i++)
+    {
+        delete f[i];
+    }
+}
 string Airline5001::getName()
 {
     return name;
@@ -29,7 +36,11 @@ void Airline5001::init(string ifile)
         getPortal()->routeInfo(o,des,dis,dur,minp,maxp,dev);
         for(int i=0;i<nof;i++)
         {
-            Flight5001 * tf = new Flight5001(o,des,"0000","abc",dur,dis,5,this);
+            string s;
+            stringstream out;
+            out<<i;
+            s = out.str();
+            Flight5001 * tf = new Flight5001(o,des,"0000",s,dur,dis,5,this);
             f.push_back(tf);
         }
     }
