@@ -191,7 +191,7 @@ void Portal5001::processUserInput(string inputFileName)
         {
             myfile>>ibuy>>preferred_airline;
             buy = mb[ibuy];
-            buyTicket(buy,preferred_airline);
+            bool r = buyTicket(buy,preferred_airline);
         }
     }
     myfile.close();
