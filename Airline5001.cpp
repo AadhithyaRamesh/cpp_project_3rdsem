@@ -96,7 +96,7 @@ bool Airline5001::issueTicket(Flight* flight)
         pk+=flight->getDistance();
         Flight5001 * tflight = static_cast<Flight5001 *>(flight);
         tflight->redAvailableSeats();
-        cout<<"Ticket issued on flight "<<tflight->getName()<<" of Airline "<<tflight->getAirline().getName()<<" for the price of "<<price<<" Rs"<<endl;
+        cout<<"Ticket issued on flight "<<tflight->getName()<<" from "<<tflight->getOrigin()<<" to "<<tflight->getDestination()<<" of Airline "<<tflight->getAirline().getName()<<" for the price of "<<price<<" Rs"<<endl;
         return true;
     }
     else
