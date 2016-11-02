@@ -129,6 +129,7 @@ void Portal5001::showFlights(string origin, string destination, SortField sortFi
         tmaxp = (maxp*dist)+(dev*maxp*dist*0.01);
         price = (*it)->getAirline().getPrice(*it);
         if(price>=tminp && price<=tmaxp)
+            cout<<(*it)->getName()<<"\t"<<(*it)->getOrigin()<<"\t"<<(*it)->getDestination()<<"\t"<<(*it)->getDeparture()<<"\t"<<(*it)->getDuration()<<"\t"<<(*it)->numAvailableSeats()<<"\t"<<price<<endl;
     }
 }
 bool Portal5001::buyTicket(BuyOption criteria, string airline)
