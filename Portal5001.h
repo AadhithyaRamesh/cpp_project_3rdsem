@@ -6,6 +6,7 @@
 #include <fstream>
 #include <algorithm>
 #include <iostream>
+#include <cstring>
 #ifndef PORTAL_H_INCLUDED
 #define PORTAL_H_INCLUDED
 #include "Portal.h"

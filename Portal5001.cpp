@@ -163,7 +163,7 @@ bool Portal5001::buyTicket(BuyOption criteria, string airline)
 
 void Portal5001::processUserInput(string inputFileName)
 {
-    string o,des,icrit,comm,iord,ibuy,preferred_airline;
+    string o,des,icrit,comm,iord,ibuy,preferred_airline,line;
     SortField crit;
     SortOrder ord;
     BuyOption buy;
@@ -186,7 +186,6 @@ void Portal5001::processUserInput(string inputFileName)
     mb["fastest"] = Fastest;
     while(myfile>>comm)
     {
-
         if(comm=="sort")
         {
             myfile>>icrit>>iord;
@@ -196,7 +195,9 @@ void Portal5001::processUserInput(string inputFileName)
         }
         else
         {
-            myfile>>ibuy>>preferred_airline;
+            myfile>>ibuy;
+            getline(myfile,preferred_airline);
+            cout<<preferred_airline<<endl;
             buy = mb[ibuy];
             bool r = buyTicket(buy,preferred_airline);
             if(r==false)
