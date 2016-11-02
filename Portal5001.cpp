@@ -50,6 +50,7 @@ vector<Flight *> Portal5001::retTopFlight(SortField sortField,SortOrder sortOrde
         vector<Airline *>::iterator cit;
         for(cit=a.begin();cit<a.end();cit++)
         {
+            cout<<(*cit)->getName()<<","<<air<<","<<endl;
             if((*cit)->getName()==air)
             {
                 cout<<(*cit)->getName()<<endl;
@@ -167,6 +168,7 @@ void Portal5001::processUserInput(string inputFileName)
     SortField crit;
     SortOrder ord;
     BuyOption buy;
+    float r,p;
     const char * temp = inputFileName.c_str();
     ifstream myfile;
     myfile.open(temp);
@@ -196,8 +198,11 @@ void Portal5001::processUserInput(string inputFileName)
         else
         {
             myfile>>ibuy;
-            getline(myfile,preferred_airline);
-            cout<<preferred_airline<<endl;
+            getline(myfile,line);
+            if(line=="")
+                preferred_airline = "";
+            else
+                preferred_airline = line.substr(1,line.length()-1);
             buy = mb[ibuy];
             bool r = buyTicket(buy,preferred_airline);
             if(r==false)
@@ -207,4 +212,12 @@ void Portal5001::processUserInput(string inputFileName)
         }
     }
     myfile.close();
+    int ticksold;
+    for(unsigned int i;i<a.size();i++)
+    {
+        a[i]->getSalesStats(r,p);
+        ticksold = a[i]->getNumSold();
+        cout<<"Airline "<<a[i]->getName()<<" sold "<<ticksold<<" tickets with a total revenue of "<<r<<" and passenger kilometers of "<<p<<endl;
+
+    }
 }

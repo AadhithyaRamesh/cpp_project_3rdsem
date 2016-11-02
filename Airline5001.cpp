@@ -6,6 +6,7 @@ using namespace std;
 Airline5001::Airline5001(Portal* p1): Airline(p1)
 {
     ts = 0;
+    tickets_sold = 0;
     Airline * ta = static_cast<Airline *>(this);
     p1->addAirline(ta);
     name = "A0071";
@@ -84,7 +85,7 @@ void Airline5001::findFlights(string origin, string destination,vector<Flight *>
 }
 int Airline5001::getNumSold()
 {
-    return ts;
+    return tickets_sold;
 }
 void Airline5001::getSalesStats(float& revenue,float& passkm)
 {
@@ -95,7 +96,7 @@ bool Airline5001::issueTicket(Flight* flight)
 {
     if(flight->numAvailableSeats()>0)
     {
-        ts--;
+        tickets_sold++;
         float price = getPrice(flight);
         reven+=price;
         pk+=flight->getDistance();

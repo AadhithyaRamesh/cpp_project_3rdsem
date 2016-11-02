@@ -13,7 +13,7 @@
 
 class Airline5001 : public Airline
 {
-    int ts;
+    int ts,tickets_sold;
     string name;
     float reven,pk;
     vector<Flight5001 *> f;
