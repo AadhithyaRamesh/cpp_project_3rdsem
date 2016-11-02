@@ -7,7 +7,7 @@ Airline5001b::Airline5001b(Portal* p1): Airline(p1)
     ts = 0;
     Airline * ta = static_cast<Airline *>(this);
     p1->addAirline(ta);
-    name = "A0071";
+    name = "A0072";
 }
 Airline5001b::~Airline5001b()
 {
@@ -53,13 +53,13 @@ void Airline5001b::init(string ifile)
         }
 
     }
-    int sof = ts/f.size();
+    /*int sof = ts/f.size();
     cout<<ts<<f.size()<<sof<<endl;
     for(unsigned int i = 0;i<f.size()-1;i++)
     {
         f[i]->setAvailableSeats(sof);
     }
-    f.back()->setAvailableSeats(ts-(sof*(f.size()-1)));
+    f.back()->setAvailableSeats(ts-(sof*(f.size()-1)));*/
     myfile.close();
 }
 float Airline5001b::getPrice(Flight * fl)
