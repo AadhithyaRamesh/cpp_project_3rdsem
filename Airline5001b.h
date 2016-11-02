@@ -3,7 +3,10 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "Portal5001.h"
+#ifndef PORTAL_H_INCLUDED
+#define PORTAL_H_INCLUDED
+#include "Portal.h"
+#endif // PORTAL_H_INCLUDED
 #include <sstream>
 #ifndef AIRLINE_H_INCLUDED
 #define AIRLINE_H_INCLUDED

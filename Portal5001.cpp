@@ -55,14 +55,6 @@ vector<Flight *> Portal5001::retTopFlight(SortField sortField,SortOrder sortOrde
                 (*cit)->findFlights(lo,ld,f);
             }
         }
-        if(f.empty())
-        {
-            vector<Airline *>::iterator cit;
-            for(cit=a.begin();cit<a.end();cit++)
-            {
-                (*cit)->findFlights(lo,ld,f);
-            }
-        }
     }
     else
     {
@@ -125,12 +117,18 @@ void Portal5001::routeInfo(string origin, string destination, float& dist, float
 }
 void Portal5001::showFlights(string origin, string destination, SortField sortField,SortOrder sortOrder)
 {
+
     vector<Flight *> f;
     f = sortFlights(origin,destination,sortField,sortOrder);
     vector<Flight *>::iterator it;
     for(it=f.begin();it<f.end();it++)
     {
-        cout<<(*it)->getName()<<" "<<(*it)->getOrigin()<<" "<<(*it)->getDestination()<<" "<<(*it)->getDeparture()<<" "<<(*it)->getDuration()<<" "<<(*it)->numAvailableSeats()<<" "<<(*it)->getAirline().getPrice(*it)<<endl;
+        float price,dist,dur,minp,maxp,dev,tminp,tmaxp;
+        routeInfo(origin,destination,dist,dur,minp,maxp,dev);
+        tminp = (minp*dist)-(dev*minp*dist*0.01);
+        tmaxp = (maxp*dist)+(dev*maxp*dist*0.01);
+        price = (*it)->getAirline().getPrice(*it);
+        if(price>=tminp && price<=tmaxp)
     }
 }
 bool Portal5001::buyTicket(BuyOption criteria, string airline)
@@ -192,7 +190,7 @@ void Portal5001::processUserInput(string inputFileName)
             crit = m[icrit];
             showFlights(o,des,crit,ord);
         }
-        else
+        else if(comm=="buy")
         {
             myfile>>ibuy;
             getline(myfile,line);
@@ -206,6 +204,10 @@ void Portal5001::processUserInput(string inputFileName)
             {
                 cout<<"No tickets available\n";
             }
+        }
+        else
+        {
+            myfile>>o>>des;
         }
     }
     myfile.close();

@@ -11,7 +11,7 @@ Airline5001::Airline5001(Portal* p1): Airline(p1)
     pk = 0;
     Airline * ta = dynamic_cast<Airline *>(this);
     p1->addAirline(ta);
-    name = "A0071";
+    name = "Airline5001";
 }
 Airline5001::~Airline5001()
 {
@@ -57,13 +57,12 @@ void Airline5001::init(string ifile)
         }
 
     }
-    /*int sof = ts/f.size();
-    cout<<ts<<f.size()<<sof<<endl;
+    int sof = ts/f.size();
     for(unsigned int i = 0;i<f.size()-1;i++)
     {
         f[i]->setAvailableSeats(sof);
     }
-    f.back()->setAvailableSeats(ts-(sof*(f.size()-1)));*/
+    f.back()->setAvailableSeats(ts-(sof*(f.size()-1)));
     myfile.close();
 }
 float Airline5001::getPrice(Flight * fl)
