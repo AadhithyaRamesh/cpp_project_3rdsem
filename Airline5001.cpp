@@ -9,7 +9,7 @@ Airline5001::Airline5001(Portal* p1): Airline(p1)
     tickets_sold = 0;
     reven = 0;
     pk = 0;
-    Airline * ta = static_cast<Airline *>(this);
+    Airline * ta = dynamic_cast<Airline *>(this);
     p1->addAirline(ta);
     name = "A0071";
 }
@@ -102,7 +102,7 @@ bool Airline5001::issueTicket(Flight* flight)
         float price = getPrice(flight);
         reven+=price;
         pk+=flight->getDistance();
-        Flight5001 * tflight = static_cast<Flight5001 *>(flight);
+        Flight5001 * tflight = dynamic_cast<Flight5001 *>(flight);
         tflight->redAvailableSeats();
         cout<<"Ticket issued on flight "<<tflight->getName()<<" from "<<tflight->getOrigin()<<" to "<<tflight->getDestination()<<" of Airline "<<tflight->getAirline().getName()<<" for the price of "<<price<<" Rs"<<endl;
         return true;

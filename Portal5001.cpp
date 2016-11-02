@@ -50,10 +50,8 @@ vector<Flight *> Portal5001::retTopFlight(SortField sortField,SortOrder sortOrde
         vector<Airline *>::iterator cit;
         for(cit=a.begin();cit<a.end();cit++)
         {
-            cout<<(*cit)->getName()<<","<<air<<","<<endl;
             if((*cit)->getName()==air)
             {
-                cout<<(*cit)->getName()<<endl;
                 (*cit)->findFlights(lo,ld,f);
             }
         }
@@ -132,7 +130,7 @@ void Portal5001::showFlights(string origin, string destination, SortField sortFi
     vector<Flight *>::iterator it;
     for(it=f.begin();it<f.end();it++)
     {
-        cout<<(*it)->getOrigin()<<" "<<(*it)->getDestination()<<" "<<(*it)->getDeparture()<<" "<<(*it)->getDuration()<<" "<<(*it)->numAvailableSeats()<<" "<<(*it)->getAirline().getPrice(*it)<<endl;
+        cout<<(*it)->getName()<<" "<<(*it)->getOrigin()<<" "<<(*it)->getDestination()<<" "<<(*it)->getDeparture()<<" "<<(*it)->getDuration()<<" "<<(*it)->numAvailableSeats()<<" "<<(*it)->getAirline().getPrice(*it)<<endl;
     }
 }
 bool Portal5001::buyTicket(BuyOption criteria, string airline)
