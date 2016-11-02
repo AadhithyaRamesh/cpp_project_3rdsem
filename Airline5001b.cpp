@@ -6,6 +6,8 @@ Airline5001b::Airline5001b(Portal* p1): Airline(p1)
 {
     ts = 0;
     tickets_sold=0;
+    reven = 0;
+    pk = 0;
     Airline * ta = static_cast<Airline *>(this);
     p1->addAirline(ta);
     name = "A0072";

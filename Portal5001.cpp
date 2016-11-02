@@ -168,7 +168,6 @@ void Portal5001::processUserInput(string inputFileName)
     SortField crit;
     SortOrder ord;
     BuyOption buy;
-    float r,p;
     const char * temp = inputFileName.c_str();
     ifstream myfile;
     myfile.open(temp);
@@ -212,8 +211,9 @@ void Portal5001::processUserInput(string inputFileName)
         }
     }
     myfile.close();
+    float r,p;
     int ticksold;
-    for(unsigned int i;i<a.size();i++)
+    for(unsigned int i=0;i<a.size();i++)
     {
         a[i]->getSalesStats(r,p);
         ticksold = a[i]->getNumSold();
