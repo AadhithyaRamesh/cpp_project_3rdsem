@@ -65,7 +65,12 @@ void Airline5001::init(string ifile)
 }
 float Airline5001::getPrice(Flight * fl)
 {
-    return (fl->getDistance())*2;
+    string o,des,dep;
+    float dur,dis,minp,maxp,dev;
+    o = fl->getOrigin();
+    des = fl->getDestination();
+    getPortal()->routeInfo(o,des,dis,dur,minp,maxp,dev);
+    return (fl->getDistance())*((maxp+minp)/2);
 }
 void Airline5001::findFlights(string origin, string destination,vector<Flight *>& flights)
 {
