@@ -18,8 +18,8 @@ class Airline5001b : public Airline
     float reven,pk;
     vector<Flight5001 *> f;
 public:
-    Airline5001(Portal *p1);
-    ~Airline5001();
+    Airline5001b(Portal *p1);
+    ~Airline5001b();
     string getName();
     void init(string ifile);
     void findFlights(string origin, string destination,vector<Flight *> & flights);
